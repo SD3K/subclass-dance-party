@@ -12,10 +12,11 @@ describe('resizingDancer', function() {
     expect(resizingDancer.$node).to.be.an.instanceof(jQuery);
   });
 
-  xit('should have a step function that makes its node blink', function() {
+  it('should have a step function that makes its size change', function() {
     sinon.spy(resizingDancer.$node, 'toggle');
-    resizingDancer.step();
-    expect(resizingDancer.$node.css.called).to.be.true;
+    var size = resizingDancer.resize;
+    clock.tick(timeBetweenSteps);
+    expect(resizingDancer.resize).to.not.equal(size);
   });
 
   describe('dance', function() {
