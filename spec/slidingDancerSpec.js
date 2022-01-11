@@ -12,10 +12,16 @@ describe('slidingDancer', function() {
     expect(slidingDancer.$node).to.be.an.instanceof(jQuery);
   });
 
-  xit('should have a step function that makes its node slide', function() {
-    sinon.spy(slidingDancer.$node, 'toggle');
-    slidingDancer.step();
-    expect(slidingDancer.$node.toggle.called).to.be.true;
+  it('should have a step function that makes its node slide', function() {
+    sinon.spy(slidingDancer, 'step');
+    let top = slidingDancer.top;
+    let left = slidingDancer.left;
+    expect(slidingDancer.top).to.be.equal(top);
+    expect(slidingDancer.left).to.be.equal(left);
+    clock.tick(timeBetweenSteps);
+    clock.tick(timeBetweenSteps);
+    expect(slidingDancer.top).to.not.equal(top);
+    expect(slidingDancer.left).to.not.equal(left);
   });
 
   describe('dance', function() {
