@@ -8,7 +8,10 @@ makeResizingDancer.prototype.constructor = makeResizingDancer;
 
 makeResizingDancer.prototype.step = function() {
   // this.$node.css('border-radius', '10px');
+  let max = 90;
+  let min = 20;
+  this.resize = Math.floor(Math.random() * (max - min + 1)) + min;
   makeDancer.prototype.step.call(this);
-  this.resize = Math.floor(Math.random() * 10);
-  this.$node.css('border', this.resize + 'px solid red');
+  this.$node.css('width', this.resize + 'px');
+  this.$node.css('height', this.resize + 'px');
 };
