@@ -3,25 +3,36 @@ body, html{
 }
 body{
   margin: 0px;
-  background-color:#444;
+  background-image: url("asset/background.jpeg");
+  background-color:rgb(236, 223, 223);
   font-size: 18px;
 }
 body, a:link, a:visited, a:active{
-  color: lightblue;
+  color: rgb(0, 0, 0);
 }
-.title, .addDancerButton{
-  padding:5px 12px;
-  float:right;
+.title, .addDancerButton, .addResizingDancerButton, .addSlidingDancerButton, .addMakingALineButton{
+  padding:5px 10px;
+  float: none;
+  text-align: center;
 }
 .topbar{
   height:32px;
-  background-color: #555;
+  background-color: rgb(240, 230, 230);
 }
 .title{
-  background-color: #777;
+  background-color: rgb(255, 255, 255);
 }
 .dancer{
-  border:10px solid red;
+  border:10px solid transparent;
   border-radius:10px;
   position:absolute;
+  height: 60px;
+  width: 60px;
+  max-width: 100%;
+  height: auto;
 }
+
+img {
+  max-width: 100%;
+  height: auto;
+  }
