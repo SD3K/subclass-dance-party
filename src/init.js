@@ -17,14 +17,13 @@ $(document).ready(function() {
      */
 
     /* ======== blinky dancers ======= */
-    var dancerMakerFunctionName = $(this).data('makeBlinkyDancer');
+    var dancerMakerFunctionName = $(this).data('BlinkyDancer');
 
     // get the maker function for the kind of dancer we're supposed to make
     var dancerMakerFunction = window[dancerMakerFunctionName];
 
-
     // make a dancer with a random position
-    var dancer = new makeBlinkyDancer(
+    var dancer = new BlinkyDancer(
       $('body').height() * Math.random(),
       $('body').width() * Math.random(),
       Math.random() * 1000
@@ -37,14 +36,14 @@ $(document).ready(function() {
   /* ======== resizing dancers ======= */
   $('.addResizingDancerButton').on('click', function(event) {
 
-    var dancerMakerFunctionName = $(this).data('makeResizingDancer');
+    var dancerMakerFunctionName = $(this).data('ResizingDancer');
     console.log(dancerMakerFunctionName);
 
     // get the maker function for the kind of dancer we're supposed to make
     var dancerMakerFunction = window[dancerMakerFunctionName];
 
     // make a dancer with a random position
-    var resizingDancer = new makeResizingDancer(
+    var resizingDancer = new ResizingDancer(
       $('body').height() * Math.random(),
       $('body').width() * Math.random(),
       Math.random() * 1000
@@ -57,13 +56,13 @@ $(document).ready(function() {
   /* ======== sliding dancers ======= */
   $('.addSlidingDancerButton').on('click', function(event) {
 
-    var dancerMakerFunctionName = $(this).data('makeSlidingDancer');
+    var dancerMakerFunctionName = $(this).data('SlidingDancer');
 
     // get the maker function for the kind of dancer we're supposed to make
     var dancerMakerFunction = window[dancerMakerFunctionName];
 
     // make a dancer with a random position
-    var slidingDancer = new makeSlidingDancer(
+    var slidingDancer = new SlidingDancer(
       $('body').height() * Math.random(),
       $('body').width() * Math.random(),
       Math.random() * 1000
@@ -74,7 +73,29 @@ $(document).ready(function() {
   });
 
   $('.addMakingALineButton').on('click', function(event) {
-
+    // $align.toggle();
+    let left = 80;
+    let top = 0;
+    var styleSettings = {
+      left: left + 'px',
+      top: top + 'px'
+    };
+    if (window.aligned) {
+      window.aligned = false;
+    } else {
+      window.aligned = true;
+    }
+    for (var i = 0; i < window.dancers.length; i++) {
+      top += 80;
+      if ((top + 80) > window.innerHeight) {
+        top = 80;
+        left += 80;
+      }
+      styleSettings.top = top + 'px';
+      styleSettings.left = left + 'px';
+      window.dancers[i].css(styleSettings);
+    }
   });
+
 });
 
