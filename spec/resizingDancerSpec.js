@@ -5,7 +5,7 @@ describe('resizingDancer', function() {
 
   beforeEach(function() {
     clock = sinon.useFakeTimers();
-    resizingDancer = new makeResizingDancer(10, 20, timeBetweenSteps);
+    resizingDancer = new ResizingDancer(10, 20, timeBetweenSteps);
   });
 
   it('should have a jQuery $node object', function() {
@@ -14,9 +14,9 @@ describe('resizingDancer', function() {
 
   it('should have a step function that makes its size change', function() {
     sinon.spy(resizingDancer.$node, 'toggle');
-    var size = resizingDancer.resize;
-    clock.tick(timeBetweenSteps);
-    expect(resizingDancer.resize).to.not.equal(size);
+    let width = resizingDancer.$node.width;
+    resizingDancer.step();
+    expect(width).to.not.equal(resizingDancer.$node.width);
   });
 
   describe('dance', function() {
