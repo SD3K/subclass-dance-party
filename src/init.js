@@ -17,13 +17,13 @@ $(document).ready(function() {
      */
 
     /* ======== blinky dancers ======= */
-    var dancerMakerFunctionName = $(this).data('BlinkyDancer');
+    var dancerMakerFunctionName = $(this).data('dancer-maker-function-name');
 
     // get the maker function for the kind of dancer we're supposed to make
     var dancerMakerFunction = window[dancerMakerFunctionName];
 
     // make a dancer with a random position
-    var dancer = new BlinkyDancer(
+    var dancer = new dancerMakerFunction(
       $('body').height() * Math.random(),
       $('body').width() * Math.random(),
       Math.random() * 1000
@@ -33,47 +33,7 @@ $(document).ready(function() {
     window.dancers.push(dancer.$node);
   });
 
-  /* ======== resizing dancers ======= */
-  $('.addResizingDancerButton').on('click', function(event) {
-
-    var dancerMakerFunctionName = $(this).data('ResizingDancer');
-    console.log(dancerMakerFunctionName);
-
-    // get the maker function for the kind of dancer we're supposed to make
-    var dancerMakerFunction = window[dancerMakerFunctionName];
-
-    // make a dancer with a random position
-    var resizingDancer = new ResizingDancer(
-      $('body').height() * Math.random(),
-      $('body').width() * Math.random(),
-      Math.random() * 1000
-    );
-    $('body').append(resizingDancer.$node);
-    $(resizingDancer.$node).prepend('<img class = "face" src = asset/' + resizingDancer.face + '>');
-    window.dancers.push(resizingDancer.$node);
-  });
-
-  /* ======== sliding dancers ======= */
-  $('.addSlidingDancerButton').on('click', function(event) {
-
-    var dancerMakerFunctionName = $(this).data('SlidingDancer');
-
-    // get the maker function for the kind of dancer we're supposed to make
-    var dancerMakerFunction = window[dancerMakerFunctionName];
-
-    // make a dancer with a random position
-    var slidingDancer = new SlidingDancer(
-      $('body').height() * Math.random(),
-      $('body').width() * Math.random(),
-      Math.random() * 1000
-    );
-    $('body').append(slidingDancer.$node);
-    $(slidingDancer.$node).prepend('<img class = "face" src = asset/' + slidingDancer.face + '>');
-    window.dancers.push(slidingDancer.$node);
-  });
-
-  $('.addMakingALineButton').on('click', function(event) {
-    // $align.toggle();
+  $('.addAlignButton').on('click', function(event) {
     let left = 80;
     let top = 0;
     var styleSettings = {

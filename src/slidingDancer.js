@@ -29,7 +29,6 @@ SlidingDancer.prototype.step = function() {
 
   this.$node.mouseenter(function(event) {
     $(this).css('transform', 'rotate(270deg)');
-    // $(this).animate({'-moz-transform': 'rotate(90deg)'}, 350);
   });
 
   this.$node.mouseleave(function(event) {
